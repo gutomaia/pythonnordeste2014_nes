@@ -1,4 +1,3 @@
-
 ifeq "" "$(shell which python)"
 default:
 	@echo "Please install python"
@@ -9,7 +8,6 @@ endif
 
 clean:
 	@rm pyne2014.png
-
 
 pyne2014.png:
 	@convert pythonnordeste2014.png \
@@ -22,7 +20,3 @@ pyne2014.png:
 		+dither \
 		pyne2014.png
 	@touch $@
-
-
-
-
