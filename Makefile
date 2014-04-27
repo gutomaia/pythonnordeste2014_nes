@@ -3,7 +3,7 @@ default:
 	@echo "Please install python"
 	exit 1
 else
-default: pyne2014.png
+default: pyne2014.nes
 endif
 
 clean:
@@ -20,3 +20,14 @@ pyne2014.png:
 		+dither \
 		pyne2014.png
 	@touch $@
+
+.pip_check: requirements.txt
+	pip install -r requirements.txt
+	touch $@
+
+pyne2014.bin: pyne2014.png .pip_check
+	pynes img pyne2014.png
+
+pyne2014.nes: pyne2014.bin pyne2014.chr .pip_check
+	pynes asm pyne2014.asm -o pyne2014.nes
+
